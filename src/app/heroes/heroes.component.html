@@ -1,28 +1,9 @@
-<div *ngIf="selectedHero">
-<h2>
-  {{ selectedHero.name | uppercase }} 
-  Details </h2>
-<div><span>id: </span> {{ selectedHero.id }} </div>
-<div><span>Name: </span> {{ selectedHero.name }} </div>
-
-<div>
-  <label>
-    name:
-    <!-- [(ngModel)] ==> Two-way data binding syntax -->
-    <input [(ngModel)] = "selectedHero.name" placeholder="name">
-  </label>
-</div>
-</div>
-
-
-<!-- ------------------------------------------------------------------------------------ -->
-
 <h2>My Heroes</h2>
 
 <ul class="heroes">
   <!-- *ngFor is repeater directive, repeats the host element for each element in a list -->
   <!-- Whe user clicks in the <li>, Angular executes the onSelect(hero) expression -->
-  <li class="selected" *ngFor="let hero of heroes"
+  <li *ngFor="let hero of heroes"
   [class.selected] = "hero === selectedHero"
   (click)="onSelect(hero)">
   <!-- [class.selected] = "hero === selectedHero" ==> add CSS class conditionally -->
@@ -30,3 +11,5 @@
     {{hero.name}}
   </li>
 </ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
